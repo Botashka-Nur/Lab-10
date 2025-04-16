@@ -37,7 +37,7 @@ def insert_from_csv(filename="contacts.csv"):
         conn.commit()
         print(f" Data from {filename} file has been successfully added.")
     except FileNotFoundError:
-        print(f"⚠ {filename} file not found.")
+        print(f"{filename} file not found.")
     finally:
         cur.close()
         conn.close()
@@ -72,7 +72,7 @@ def update_data():
         new_phone = input("Enter new phone number: ")
         cur.execute("UPDATE phonebook SET phone = %s WHERE username = %s", (new_phone, username))
     else:
-        print(" Invalid choice!")
+        print("Invalid choice!")
         return
 
     conn.commit()
@@ -97,7 +97,7 @@ def query_data():
         phone = input("Enter phone number: ")
         cur.execute("SELECT * FROM phonebook WHERE phone = %s", (phone,))
     else:
-        print("⚠ Invalid choice!")
+        print("Invalid choice!")
         return
 
     rows = cur.fetchall()
@@ -105,7 +105,7 @@ def query_data():
         for row in rows:
             print(f"Username: {row[1]}, Phone: {row[2]}")
     else:
-        print("⚠ No data found.")
+        print("No data found.")
     
     cur.close()
     conn.close()
